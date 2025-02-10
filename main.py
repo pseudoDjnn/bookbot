@@ -1,3 +1,21 @@
+def comp_report(char_counts):
+  result = []
+
+  char_count = count_characters(char_counts)
+
+  char_list = []
+  for char, count in char_count.items():
+    if char.isalpha():
+      char_list.append({"char": char, "num": count})
+
+  char_list.sort(key=lambda x: x["num"], reverse=True)
+
+  for item in char_list:
+    formatted = f"The '{item['char']}' character was found {item['num']} times"
+    result.append(formatted)
+  
+  return result
+
 def count_characters(text):
   result = {}
   for t in text:
@@ -22,7 +40,7 @@ def main():
     # Now call word_count and print the result
     # Can you add these lines?
 
-    result = count_characters(file_contents)
+    result = comp_report(file_contents)
     print(result)
 
 main()
