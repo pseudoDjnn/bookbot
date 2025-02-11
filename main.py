@@ -3,30 +3,37 @@ def comp_report(char_counts):
 
   char_count = count_characters(char_counts)
 
-  char_list = []
-  for char, count in char_count.items():
+  container = []
+  for char, num in char_count.items():
     if char.isalpha():
-      char_list.append({"char": char, "num": count})
+      container.append({"char": char, "num": num})
 
-  char_list.sort(key=lambda x: x["num"], reverse=True)
+  # Using .sort()
+  def sort_on(dict):
+    return dict["num"]
 
-  for item in char_list:
-    formatted = f"The '{item['char']}' character was found {item['num']} times"
+  container.sort(key=sort_on, reverse=True)
+
+  # Lambda
+  # container.sort(key=lambda x: x["num"], reverse=True)
+
+  for content in container:
+    formatted = f"The '{content['char']}' character was found {content['num']} times"
     result.append(formatted)
   
   return result
 
 def count_characters(text):
   result = {}
-  for t in text:
+  for letter in text:
 
-    # print(t)
-    lower_t = t.lower()
+    # print(letter)
+    lower_letter = letter.lower()
 
-    if lower_t in result:
-      result[lower_t] += 1
+    if lower_letter in result:
+      result[lower_letter] += 1
     else:
-      result[lower_t] = 1
+      result[lower_letter] = 1
 
   return result
 
@@ -40,7 +47,14 @@ def main():
     # Now call word_count and print the result
     # Can you add these lines?
 
-    result = comp_report(file_contents)
-    print(result)
+    words = word_count(file_contents)
+    # print(words)
+
+
+    count = count_characters(file_contents)
+    # print(count)
+    
+    report = comp_report(file_contents)
+    print(report)
 
 main()
