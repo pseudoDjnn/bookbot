@@ -4,6 +4,7 @@ def comp_report(char_counts):
   char_count = count_characters(char_counts)
 
   container = []
+
   for char, num in char_count.items():
     if char.isalpha():
       container.append({"char": char, "num": num})
@@ -18,8 +19,8 @@ def comp_report(char_counts):
   # container.sort(key=lambda x: x["num"], reverse=True)
 
   for content in container:
-    formatted = f"The '{content['char']}' character was found {content['num']} times"
-    result.append(formatted)
+    final_string = f"The '{content['char']}' character was found {content['num']} times"
+    result.append(final_string)
   
   return result
 
@@ -49,7 +50,6 @@ def main():
 
     words = word_count(file_contents)
     # print(words)
-
 
     count = count_characters(file_contents)
     # print(count)
