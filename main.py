@@ -43,8 +43,8 @@ def word_count(words):
     return len(result)
 
 def main():
-    with open("books/frankenstein.txt") as f:
-        file_contents = f.read()
+    with open("books/frankenstein.txt") as file:
+        file_contents = file.read()
     # Now call word_count and print the result
     # Can you add these lines?
 
