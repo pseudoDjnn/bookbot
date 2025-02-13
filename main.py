@@ -1,3 +1,5 @@
+import word_count
+
 def comp_report(char_counts):
   result = []
 
@@ -38,9 +40,7 @@ def count_characters(text):
 
   return result
 
-def word_count(words):
-    result = words.split()
-    return len(result)
+
 
 def main():
     with open("books/frankenstein.txt") as file:
@@ -48,13 +48,13 @@ def main():
     # Now call word_count and print the result
     # Can you add these lines?
 
-    words = word_count(file_contents)
-    # print(words)
+    words = word_count.word_count(file_contents)
+    print(words)
 
     count = count_characters(file_contents)
     # print(count)
     
     report = comp_report(file_contents)
-    print(report)
+    # print(report)
 
 main()
