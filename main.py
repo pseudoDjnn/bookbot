@@ -1,9 +1,10 @@
 import word_count
+import count_characters
 
 def comp_report(char_counts):
   result = []
 
-  char_count = count_characters(char_counts)
+  char_count = count_characters.count_characters(char_counts)
 
   container = []
 
@@ -26,19 +27,6 @@ def comp_report(char_counts):
   
   return result
 
-def count_characters(text):
-  result = {}
-  for letter in text:
-
-    # print(letter)
-    lower_letter = letter.lower()
-
-    if lower_letter in result:
-      result[lower_letter] += 1
-    else:
-      result[lower_letter] = 1
-
-  return result
 
 
 
@@ -49,10 +37,10 @@ def main():
     # Can you add these lines?
 
     words = word_count.word_count(file_contents)
-    print(words)
+    # print(words)
 
-    count = count_characters(file_contents)
-    # print(count)
+    count = count_characters.count_characters(file_contents)
+    print(count)
     
     report = comp_report(file_contents)
     # print(report)
