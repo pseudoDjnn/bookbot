@@ -1,6 +1,6 @@
-import word_counter
-import character_counter
-import comp_report
+from word_counter import word_count
+from character_counter import count_characters
+from comp_report import comp_report
 
 
 
@@ -10,13 +10,13 @@ def main():
     # Now call word_count and print the result
     # Can you add these lines?
 
-    words = word_counter.word_count(file_contents)
+    words = word_count(file_contents)
     # print(words)
 
-    count = character_counter.count_characters(file_contents)
-    print(count)
+    count = count_characters(file_contents)
+    # print(count)
     
-    report = comp_report.comp_report(file_contents)
-    # print(report)
+    report = comp_report(file_contents)
+    print(report)
 
 main()
