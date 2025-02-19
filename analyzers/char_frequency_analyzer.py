@@ -1,4 +1,4 @@
-from total_char_counter import count_total_chars
+from .total_char_counter import count_total_chars
 
 
 def analyze_char_frequency(char_counts):
