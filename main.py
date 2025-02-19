@@ -1,8 +1,8 @@
 import argparse
 
-from total_word_counter import count_total_words
-from total_char_counter import count_total_chars
-from char_frequency_analyzer import analyze_char_frequency
+# main.py
+from analyzers import TextAnalyzer
+from utils import setup_text_analyzer_cli
 
 
 def parser():
@@ -52,13 +52,13 @@ def main():
     # Now call word_count and print the result
     # Can you add these lines?
 
-    words = count_total_words(file_contents)
+    # words = count_total_words(file_contents)
     # print(words)
 
-    count = count_total_chars(file_contents)
+    # count = count_total_chars(file_contents)
     # print(count)
     
-    report = analyze_char_frequency(file_contents)
-    print(report)
+    # report = analyze_char_frequency(file_contents)
+    # print(report)
 
 main()
