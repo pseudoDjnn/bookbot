@@ -1,4 +1,4 @@
-def count_characters(text):
+def count_total_chars(text):
   result = {}
   for letter in text:
 

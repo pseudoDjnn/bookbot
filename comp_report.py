@@ -1,10 +1,10 @@
-import character_counter
+from total_char_counter import count_total_chars
 
 
 def comp_report(char_counts):
   result = []
 
-  char_count = character_counter.count_characters(char_counts)
+  char_count = count_total_chars(char_counts)
 
   container = []
 
