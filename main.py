@@ -2,7 +2,7 @@ import argparse
 
 from total_word_counter import count_total_words
 from total_char_counter import count_total_chars
-from comp_report import comp_report
+from char_frequency_analyzer import analyze_char_frequency
 
 
 def parser():
@@ -58,7 +58,7 @@ def main():
     count = count_total_chars(file_contents)
     # print(count)
     
-    report = comp_report(file_contents)
+    report = analyze_char_frequency(file_contents)
     print(report)
 
 main()
