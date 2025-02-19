@@ -1,6 +1,6 @@
 import argparse
 
-from word_counter import word_count
+from total_word_count import count_total_words
 from character_counter import count_characters
 from comp_report import comp_report
 
@@ -52,13 +52,13 @@ def main():
     # Now call word_count and print the result
     # Can you add these lines?
 
-    words = word_count(file_contents)
-    # print(words)
+    words = count_total_words(file_contents)
+    print(words)
 
     count = count_characters(file_contents)
     # print(count)
     
     report = comp_report(file_contents)
-    print(report)
+    # print(report)
 
 main()
