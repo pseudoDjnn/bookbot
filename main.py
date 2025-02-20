@@ -10,20 +10,12 @@ from utils import setup_text_analyzer_cli
 
 def main():
     
-    search = setup_text_analyzer_cli()
-    
-    with open(search.book) as file:
+    # Read Frankenstein and soon to be other .txt files
+    with open('books/frankenstein.txt') as file:
         file_contents = file.read()
-    # Now call word_count and print the result
-    # Can you add these lines?
-
-    # words = count_total_words(file_contents)
-    # print(words)
-
-    # count = count_total_chars(file_contents)
-    # print(count)
     
-    # report = analyze_char_frequency(file_contents)
-    # print(report)
+    # Create analyzer instance with text
+    analyzer = TextAnalyzer(file_contents)
+    print(f"Word count analysis: {analyzer.get_word_count()}")
 
 main()
