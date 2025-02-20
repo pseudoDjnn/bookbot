@@ -1,6 +1,6 @@
 # analyzers/text_analyzer.py
 # from .total_word_counter import count_total_words
-from .total_char_counter import count_total_chars
+# from .total_char_counter import count_total_chars
 from .char_frequency_analyzer import analyze_char_frequency
 
 class TextAnalyzer:
@@ -21,4 +21,16 @@ class TextAnalyzer:
             # Move the word counting logic here
             words = self.text.split()
             self.word_count = len(words)
-        return self.word_count 
+        return self.word_count
+    
+    def get_char_count(self):
+        if self.char_count is None:
+            self.char_count  = {}
+            for char in self.text:
+                lower_char = char.lower()
+                
+                if lower_char in self.char_count:
+                    self.char_count[lower_char] += 1
+                else:
+                    self.char_count[lower_char] = 1
+            return self.char_count

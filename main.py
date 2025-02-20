@@ -11,6 +11,6 @@ def main():
     
     # Create analyzer instance with text
     analyzer = TextAnalyzer(file_contents)
-    print(f"Word count analysis: {analyzer.get_word_count()}")
+    print(f"Word count analysis: {analyzer.get_char_count()}")
 
 main()
