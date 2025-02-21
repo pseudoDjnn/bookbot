@@ -5,7 +5,7 @@ from utils import TextAnalyzerInterface
 
 def main():
     interface = TextAnalyzerInterface()
-    interface.welcome_display()
+    # interface.welcome_display()
     
     # Read Frankenstein and soon to be other .txt files
     with open('books/frankenstein.txt') as file:
@@ -13,6 +13,6 @@ def main():
     
     # Create analyzer instance with text
     analyzer = TextAnalyzer(file_contents)
-    # print(f"Word count analysis: {analyzer.get_char_frequency()}")
+    print(analyzer.get_char_frequency())
 
 main()

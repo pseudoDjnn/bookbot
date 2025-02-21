@@ -11,25 +11,27 @@ class TextAnalyzer:
         self.get_word_count()
         
         
+    """
+        
+    Calculates and caches the total word count from the text
+        
+    """
+        
     def get_word_count(self):
-        """
-        
-        Calculates and caches the total word count from the text
-        
-        """
         if self.word_count is None:
             # Move the word counting logic here
             words = self.text.split()
             self.word_count = len(words)
         return self.word_count
     
-    def get_char_count(self):
-        """
+    """
 
-        Calculates and caches the total letter count from the test and
-        places it into a dictionary
+    Calculates and caches the total letter count from the test and
+    places it into a dictionary
         
-        """
+    """
+        
+    def get_char_count(self):
         if self.char_count is None:
             self.char_count  = {}
             for char in self.text:
@@ -40,6 +42,12 @@ class TextAnalyzer:
                 else:
                     self.char_count[lower_char] = 1
         return self.char_count
+    
+    """
+
+    Calculates and caches the total letter count frequency from the test and places it into a dictionay list
+    
+    """
         
     def get_char_frequency(self):
         # pass
@@ -49,21 +57,20 @@ class TextAnalyzer:
             char_count = self.get_char_count()
             # print(f"char_count contains: {char_count}")
             
-            container = []
+            frequency_data = []
 
             for char, num in char_count.items():
                 if char.isalpha():
-                    container.append({"Characters": char, "Numbers": num})
-                    
-            # Use .sort()
-            # def sort_on(self, dict):
-                # return dict["Numbers"]
+                    frequency_data.append({
+                        "Characters": char,
+                        "Numbers": num
+                        })
             
-            container.sort(key=lambda x: x["Numbers"], reverse=True)
+            frequency_data.sort(key=lambda x: x["Numbers"], reverse=True)
             
             
-            for content in container:
-                result = f"The '{content['Characters']}' character was found {content['Numbers']} times"
+            for data in frequency_data:
+                result = f"The '{data['Characters']}' character was found {data['Numbers']} times"
                 self.char_frequency.append(result)
                 
             return self.char_frequency
