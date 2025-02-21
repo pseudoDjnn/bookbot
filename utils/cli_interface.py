@@ -47,6 +47,6 @@ class TextAnalyzerInterface:
         exit()
       else:
         print("\nInvalid response. Select...")
-      
+
     except Exception as e:
       print(f"\nAn error occured: {str(e)}")
