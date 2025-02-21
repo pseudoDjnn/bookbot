@@ -37,4 +37,16 @@ class TextAnalyzerInterface:
       """
       
   def handle_choice(self, choice):
-    pass
+    try:
+      if choice == "1":
+        self.direct_text_input()
+      elif choice == "2":
+        self.file_text_input()
+      elif choice == "3":
+        print("\nShutting down now...")
+        exit()
+      else:
+        print("\nInvalid response. Select...")
+      
+    except Exception as e:
+      print(f"\nAn error occured: {str(e)}")
