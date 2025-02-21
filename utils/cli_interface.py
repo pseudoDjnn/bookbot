@@ -13,9 +13,11 @@ class TextAnalyzerInterface:
     """
     
   def welcome_display(self):
-    
-    print("\nWelcome to the Text Analyzer")
-    print("----------------------------")
+    print("\n[TEXT ANALYSIS SYSTEM]")
+    print("=====================")
+    print("INITIALIZING...")
+    print("Status: ONLINE")
+    print("=====================")
     
     self.show_main_menu()
     
@@ -28,12 +30,14 @@ class TextAnalyzerInterface:
   def show_main_menu(self):
     
     while True:
-      print("\nPlease select option:")
-      print("1.  Input text directly")
-      print("2.  Load text from file")
-      print("3.  Exit")
+      print("\n[TEXT ANALYSIS SYSTEM]")
+      print("====================")
+      print("\nSelect Input Method:")
+      print("1.  Direct Text Input")
+      print("2.  File Import")
+      print("3.  Exit System")
         
-      choice = input("\nEnter choice (1-3): ")
+      choice = input()
       self.handle_choice(choice)
         
       """
@@ -46,27 +50,56 @@ class TextAnalyzerInterface:
       
   def handle_choice(self, choice):
     try:
-      if choice == "1":
-        self.direct_text_input()
-      elif choice == "2":
-        self.file_text_input()
-      elif choice == "3":
-        print("\nShutting down now...")
-        exit()
-      else:
-        print("\nInvalid response. Select...")
+        if choice == "1":
+            self.direct_text_input()
+        elif choice == "2":
+            self.file_text_input()
+        elif choice == "3":
+            print("\n[SYSTEM] Initiating shutdown sequence...")
+            print("Status: OFFLINE")
+            print("=====================")
+            exit()
+        else:
+            print("\n[ERROR] Invalid selection")
+            print("Please choose a valid option (1-3)")
 
     except Exception as e:
-      print(f"\nAn error occured: {str(e)}")
+        print("\n[SYSTEM ERROR]")
+        print("=====================")
+        print(f"Error details: {str(e)}")
+        print("Please try again")
       
-      """
+        """
 
-      Direct Text Input Handler
+        Direct Text Input Handler
       
-      """
+        """
       
   def direct_text_input(self):
-    print("\nEnter your text (press Enter twice to finish):")
+    print("\n[TEXT ANALYSIS SYSTEM]")
+    print("=====================")
+    print("\nSelect analysis focus:")
+    print("1. Word Usage & Patterns")
+    print("   - Word frequency and distribution")
+    print("   - Common phrases and patterns")
+    
+    print("\n2. Readability Assessment")
+    print("   - Sentence structure")
+    print("   - Text complexity")
+    
+    print("\n3. Statistical Overview")
+    print("   - Word and sentence counts")
+    print("   - Text composition metrics")
+    
+    while True:
+      try:
+          print("\nSelect analysis type (1-3): ", end='')
+          analysis_type = int(input())
+          if 1 <= analysis_type <= 3:
+              break
+          print("\n[ERROR] Please select a valid option (1-3)")
+      except ValueError:
+            print("\n[ERROR] Please enter a number between 1-3")
     
     lines = []
     
