@@ -1,9 +1,10 @@
 
 # main.py
 from analyzers import TextAnalyzer
-from utils import setup_text_analyzer_cli
+from utils import welcome_display
 
 def main():
+    welcome_display()
     
     # Read Frankenstein and soon to be other .txt files
     with open('books/frankenstein.txt') as file:
