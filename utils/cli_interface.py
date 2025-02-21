@@ -13,6 +13,12 @@ class TextAnalyzerInterface:
     """
     
   def welcome_display(self):
+    # If we already have an analyzer, skip the input selection
+    if self.analyzer:
+      self.show_analysis_menu()
+      return
+
+    # Otherwise show the input selection menu
     print("\n[TEXT ANALYSIS SYSTEM]")
     print("=====================")
     print("INITIALIZING...")
@@ -129,4 +135,35 @@ class TextAnalyzerInterface:
     pass
   
   def show_analysis_menu(self):
-    pass
+    # Verify we have an analyzer instance
+    if not self.analyzer:
+      print("\n[Error] No text loaded for analysis")
+      return
+    
+    while True:
+      print("\n[TEXT ANALYSIS OPTIONS]")
+      print("=========================")
+      print("1. Word Count")
+      print("Return to Main Menu")
+      
+      try:
+        choice = input("\nSelect option (1-2):")
+
+        if choice == "1":
+          word_count = self.analyzer.get_char_count()
+          print(f"Debug: Retrieved word count: {word_count}")  # Debug line
+
+          print("\n[WORD COUNT ANALYSIS]")
+          print("=====================")
+          print(f"Total Words: {word_count}")
+        elif choice == "2":
+          break
+        else:
+          print("\n[ERROR] invalid selection")
+          print("Please choose a valid option (1-2)")
+        
+      except Exception as e:
+        print("\n[SYSTEM ERROR]")
+        print("==============")
+        print("f'Error details: {str(e)}")
+        print("Please try again")

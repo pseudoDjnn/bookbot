@@ -3,6 +3,9 @@ class TextAnalyzer:
     def __init__(self, text):
         self.text = text
         self.word_count = None
+        print(f"Debug: Text analyzer initialized with {len(text)} characters")  # Debug line
+
+
         self.char_count = None
         self.char_frequency = None 
         
@@ -19,7 +22,6 @@ class TextAnalyzer:
         
     def get_word_count(self):
         if self.word_count is None:
-            # Move the word counting logic here
             words = self.text.split()
             self.word_count = len(words)
         return self.word_count
