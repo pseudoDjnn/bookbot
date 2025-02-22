@@ -6,9 +6,9 @@ class TextAnalyzer:
         self.char_count = None
         self.char_frequency = None 
         
-    def analyze_all(self):
-        # This just orchestrates the individual methods
-        pass        
+    # def analyze_all(self):
+    #     # This just orchestrates the individual methods
+    #     pass        
         
     """
         

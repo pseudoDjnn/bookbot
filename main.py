@@ -20,11 +20,13 @@ def main():
     # Get analysis results
     word_count = analyzer.get_word_count()
     char_count = analyzer.get_char_count()
+    char_frequency = analyzer.get_char_frequency()
     
     # Return results as JSON
     return jsonify({
         'word_count': word_count,
-        'char_count': char_count
+        'char_count occurs': char_count,
+        'char_frequency': char_frequency
     })
     
 if __name__ == '__main__':
