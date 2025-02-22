@@ -3,16 +3,12 @@ class TextAnalyzer:
     def __init__(self, text):
         self.text = text
         self.word_count = None
-        print(f"Debug: Text analyzer initialized with {len(text)} characters")  # Debug line
-
-
         self.char_count = None
         self.char_frequency = None 
         
     def analyze_all(self):
         # This just orchestrates the individual methods
-        self.get_word_count()
-        
+        pass        
         
     """
         
