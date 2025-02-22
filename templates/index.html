@@ -10,6 +10,14 @@
   <form action="/analyze/" method="POST">
     <textarea name="text" rows="10" cols="50" placeholder="Enter your text here..."></textarea>
     <br>
+    <label for="analysis_type">Choose an analyis:</label>
+    <select name="analysis_type" id="analysis_type">
+      <option value="word_count">Word Count</option>
+      <option value="char_count">Character Count</option>
+      <option value="char_frequency">Character Frequency</option>
+      <option value="all">All Three Counts</option>
+    </select>
+    <br>
     <button type="submit">Analyze</button>
   </form>
 </body>
