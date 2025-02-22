@@ -28,10 +28,12 @@ def main():
         analysis_results['Character Count'] = analyzer.get_char_count()
     elif analysis_type == "char_frequency":
         analysis_results['Character Frequency'] = analyzer.get_char_frequency()
-    elif analysis_results == "all":
+    elif analysis_type == "all":
+        # print("DEBUGGER IS WORKING")
         analysis_results['Word Count'] = analyzer.get_word_count()
         analysis_results['Character Count'] = analyzer.get_char_count()
         analysis_results['Character Frequency'] = analyzer.get_char_frequency()
+        # print("DEBUGGER IS WORKING")
     
     # Return results to the webpage
     return render_template('results.html', results=analysis_results, text=text)
