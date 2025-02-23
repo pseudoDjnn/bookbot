@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request,send_from_directory
+from flask import Flask, render_template, request
 
 from analyzers import TextAnalyzer, WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer
 
@@ -11,7 +11,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/analyze/', methods=['POST'])
-def main():
+def analyze():
     # Get text from form submission
     text = request.form.get("text", "")
     analysis_type = request.form.get("analysis_type", "all")
@@ -38,4 +38,3 @@ def main():
     
 if __name__ == '__main__':
     app.run(debug=True)
-    main()

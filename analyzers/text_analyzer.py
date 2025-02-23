@@ -11,7 +11,7 @@ class TextAnalyzer:
     
     """
     def analyze(self):
-        raise NotImplementedError("Child classes must implement the 'analyze' method")
+        raise NotImplementedError("Child classes must implement the `analyze` method")
     
     
     @staticmethod
@@ -21,12 +21,14 @@ class TextAnalyzer:
         Runs analysis from multiple analyzers and combines results into one dictionary.
         
         """
-        
-        combined_results = {}
-        for analyzer_class in analyzers:
-            analyzer_instance = analyzer_class(text)
-            combined_results.update(analyzer_instance.analyze())
-        return combined_results
+                
+        results = {}
+        for analyze in analyzers:
+            analyzer = analyze(text)
+            results.update(analyzer.analyze())
+        return {
+            "Results": results
+        }
              
         
     
@@ -46,7 +48,7 @@ class WordCountAnalyzer(TextAnalyzer):
     def get_word_count(self):
         """
                 
-        Calculates and caches the total word count from the text.
+        Calculates and caches the total word count from the `text`.
         If already calcuated, return the cached result.
                 
         """
@@ -64,7 +66,7 @@ class WordCountAnalyzer(TextAnalyzer):
         """
         
         return {
-            "total word count": self.get_word_count(),
+            "Total Word Count": self.get_word_count(),
             }
 
 
@@ -100,7 +102,7 @@ class CharacterCountAnalyzer(TextAnalyzer):
         return self.char_count
 
     def analyze(self):
-        return {"character_count": self.get_char_count()}
+        return {"Character Count": self.get_char_count()}
 
 
 """
@@ -137,15 +139,18 @@ class CharacterFrequencyAnalyzer(TextAnalyzer):
                         "Numbers": num
                         })
             
-            frequency_data.sort(key=lambda x: x["Numbers"], reverse=True)
+            frequency_data.sort(
+                key=lambda x: x["Numbers"],
+                reverse=True
+                )
             
             
             for data in frequency_data:
-                result = f"The '{data['Characters']}' character was found {data['Numbers']} times"
+                result = f"Characters: '{data['Characters']}' Count: {data['Numbers']}"
                 self.char_frequency.append(result)
                 
             return self.char_frequency
         
     def analyze(self):
-        return {"character_frequency_count": self.get_char_frequency()}
+        return {"Character Frequency": self.get_char_frequency()}
                 
