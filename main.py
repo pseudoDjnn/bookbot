@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 
-from analyzers import TextAnalyzer
+from analyzers import WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer
 
 app = Flask(__name__)
 
@@ -15,24 +15,28 @@ def main():
     text = request.form.get("text", "")
     analysis_type = request.form.get("analysis_type", "all")
     
-    # Pass text to the TextAnalyzer
-    analyzer = TextAnalyzer(text)
-    
+        
     # Dictionary to store the selected results
     analysis_results = {}
     
     # Perform analysis based on user's selection
     if analysis_type == "word_count":
-        analysis_results['Word Count'] = analyzer.get_word_count()
+        word_analyzer = WordCountAnalyzer(text)
+        analysis_results['Word Count'] = word_analyzer.get_word_count()
     elif analysis_type == "char_count":
-        analysis_results['Character Count'] = analyzer.get_char_count()
+        char_analyzer = CharacterCountAnalyzer(text)
+        analysis_results['Character Count'] = char_analyzer.get_char_count()
     elif analysis_type == "char_frequency":
-        analysis_results['Character Frequency'] = analyzer.get_char_frequency()
+        freq_analyzer = CharacterFrequencyAnalyzer(text)
+        analysis_results['Character Frequency'] = freq_analyzer.get_char_frequency()
     elif analysis_type == "all":
         # print("DEBUGGER IS WORKING")
-        analysis_results['Word Count'] = analyzer.get_word_count()
-        analysis_results['Character Count'] = analyzer.get_char_count()
-        analysis_results['Character Frequency'] = analyzer.get_char_frequency()
+        word_analyzer = WordCountAnalyzer(text)
+        char_analyzer = CharacterCountAnalyzer(text)
+        freq_analyzer = CharacterFrequencyAnalyzer(text)
+        analysis_results['Word Count'] = word_analyzer.get_word_count()
+        analysis_results['Character Count'] = char_analyzer.get_char_count()
+        analysis_results['Character Frequency'] = freq_analyzer.get_char_frequency()
         # print("DEBUGGER IS WORKING")
     
     # Return results to the webpage
