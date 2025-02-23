@@ -1,13 +1,14 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,send_from_directory
 
-from analyzers import WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer
+from analyzers import TextAnalyzer, WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer
 
 app = Flask(__name__)
 
+# Home route
 @app.route('/')
 def index():
-    # Serve the html form
-    return render_template('index.html')  # HTML file in templates foler
+    # Render your `index.html` template
+    return render_template('index.html')
 
 @app.route('/analyze/', methods=['POST'])
 def main():
@@ -19,25 +20,18 @@ def main():
     # Dictionary to store the selected results
     analysis_results = {}
     
-    # Perform analysis based on user's selection
-    if analysis_type == "word_count":
-        word_analyzer = WordCountAnalyzer(text)
-        analysis_results['Word Count'] = word_analyzer.get_word_count()
+        # Perform analysis based on user's selection and `analyze_all`
+    if analysis_type == "all":
+        analysis_results = TextAnalyzer.analyze_all(
+            text,
+            [WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer]
+        )
+    elif analysis_type == "word_count":
+        analysis_results = TextAnalyzer.analyze_all(text, [WordCountAnalyzer])
     elif analysis_type == "char_count":
-        char_analyzer = CharacterCountAnalyzer(text)
-        analysis_results['Character Count'] = char_analyzer.get_char_count()
+        analysis_results = TextAnalyzer.analyze_all(text, [CharacterCountAnalyzer])
     elif analysis_type == "char_frequency":
-        freq_analyzer = CharacterFrequencyAnalyzer(text)
-        analysis_results['Character Frequency'] = freq_analyzer.get_char_frequency()
-    elif analysis_type == "all":
-        # print("DEBUGGER IS WORKING")
-        word_analyzer = WordCountAnalyzer(text)
-        char_analyzer = CharacterCountAnalyzer(text)
-        freq_analyzer = CharacterFrequencyAnalyzer(text)
-        analysis_results['Word Count'] = word_analyzer.get_word_count()
-        analysis_results['Character Count'] = char_analyzer.get_char_count()
-        analysis_results['Character Frequency'] = freq_analyzer.get_char_frequency()
-        # print("DEBUGGER IS WORKING")
+        analysis_results = TextAnalyzer.analyze_all(text, [CharacterFrequencyAnalyzer])
     
     # Return results to the webpage
     return render_template('results.html', results=analysis_results, text=text)

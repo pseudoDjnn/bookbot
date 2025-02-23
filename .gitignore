@@ -1,2 +1,4 @@
-books/
 venv/
+books/
+
+static/node_modules

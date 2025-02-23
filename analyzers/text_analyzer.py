@@ -1,63 +1,71 @@
 class TextAnalyzer:
-    # Your TextAnalyzer class implementation
     def __init__(self, text):
-        # Initialize with the text to be analyzed
+        if not isinstance(text, str):
+            raise ValueError("TextAnalyzer requires a string input")
         self.text = text
-                    
-    """
-
-    Clean the text by lowercasing and stirpping whitespace.
-    This method can be overridden by child classes if they need more specific preprocessing.
-    
-    """
-    def clean_text(self):
-        return self.text.lower().strip()
-    
-    """
-    
-    Tokenize the text into words by splitting on whitespace.
-    Override this method in child classes for more complex tokenization (e.g. using NLP libraries).
-
-    """
-    def word_tokenization(self):
-        return self.clean_text().split()
     
     """
 
-    Abstract method placeholder for child classes.
-    Forces child classes to implement their own analytics.
+    Based method placeholder for child classe.
+    This shold be overridden by soecific analyzers.
     
     """
     def analyze(self):
         raise NotImplementedError("Child classes must implement the 'analyze' method")
+    
+    
+    @staticmethod
+    def analyze_all(text, analyzers):
+        """
+
+        Runs analysis from multiple analyzers and combines results into one dictionary.
+        
+        """
+        
+        combined_results = {}
+        for analyzer_class in analyzers:
+            analyzer_instance = analyzer_class(text)
+            combined_results.update(analyzer_instance.analyze())
+        return combined_results
              
         
-"""
-    
-Initialize with the text to analyze and prepare to cache the word count.
-    
-"""
     
 class WordCountAnalyzer(TextAnalyzer):
+    """
+        
+    Analyzer for counting total words in the provided text.
+    Caches the result for efficiency.
+        
+    """
     def __init__(self, text):
         super().__init__(text)
+        # Caches the word count to avoid recalculating
         self.word_count = None
 
-    """
-            
-    Calculates and caches the total word count from the text
-            
-    """
             
     def get_word_count(self):
+        """
+                
+        Calculates and caches the total word count from the text.
+        If already calcuated, return the cached result.
+                
+        """
         if self.word_count is None:
-            words = self.text.split()
+            words = self.text.split() 
             self.word_count = len(words)
         return self.word_count
         
         
     def analyze(self):
-        return{"total word count": self.get_word_count()}
+        """
+
+        Return the analysis as a dictionary
+        
+        """
+        
+        return {
+            "total word count": self.get_word_count(),
+            }
 
 
 """
