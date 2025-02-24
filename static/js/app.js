@@ -1,41 +1,34 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // Fetch raw JSON data from the DOM
   const dataElement = document.getElementById("results-data");
   const rawData = dataElement.textContent.trim();
-  // console.log("Loaded Raw JSON from DOM:", rawData);
 
-  // Attempt to parse the JSON
   try {
-    const parsedData = JSON.parse(JSON.parse(rawData)); // Parse twice for nested structure
-    // console.log("Parsed Data Object:", parsedData);
+    // Let's see what we're getting
+    console.log("Raw data:", rawData);
 
-    // Access the "Results" key specifically
-    const results = parsedData.Results; // Extract the nested "Results" key
-    console.log("Processing Results:", results);
+    const data = JSON.parse(rawData);
+    console.log("Parsed data:", data);
 
-    // Render the word count
-    if ("Total Word Count" in results) {
-      renderWordCount(results["Total Word Count"]);
-    } else {
-      console.warn("No 'Total Word Count' key found in Results.");
-    }
+    const charCount = data.Results["Character Count"];
+    console.log("Character count data:", charCount);
+
+    const totalChars = Object.values(charCount).reduce((a, b) => a + b, 0);
+
+    // Create results display
+    const resultsDiv = document.createElement("div");
+    resultsDiv.id = "text-results";
+    resultsDiv.innerHTML = `<p>Total Characters: ${totalChars}</p>`;
+
+    // Insert before the chart container
+    const chartContainer = document.getElementById("chart-container");
+    document.body.insertBefore(resultsDiv, chartContainer);
+
   } catch (error) {
-    console.error("Failed to parse JSON data:", error);
+    console.error("Raw data causing error:", rawData);
+    console.error("Error parsing or displaying results:", error);
+    const errorDiv = document.createElement("div");
+    errorDiv.className = "error";
+    errorDiv.textContent = "Error displaying results";
+    document.body.appendChild(errorDiv);
   }
 });
-
-// Render the word count using fetched data
-function renderWordCount(wordCount) {
-  // Find or create an element where you want to display the word count
-  let wordCountElement = document.getElementById("word-count");
-
-  if (!wordCountElement) {
-    // If the element doesn't exist, create it dynamically
-    wordCountElement = document.createElement("div");
-    wordCountElement.id = "word-count";
-    document.body.appendChild(wordCountElement);
-  }
-
-  // Update the content of the element
-  wordCountElement.textContent = `Total Word Count: ${wordCount}`;
-}

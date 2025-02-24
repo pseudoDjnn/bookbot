@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Text Analysis Results</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analysis Results</title>
 </head>
 <body>
-  <h1>Text Analysis Results</h1>
+    <h1>Analysis Results</h1>
 
-  <!-- Results data -->
-  
-  <!-- Bar chart container -->
-  <div id="chart-container">
-    <svg id="chart"></svg>
-  </div>
-  
-  <!-- Include your app.js script -->
-  <script id="results-data" style="display:none;">{{ results | tojson}}</script>
-  <script src="/static/js/app.js"></script>
-  <script src="/static/js/d3.min.js"></script>
+    <div id="analysis-results">
+        {% if analysis_type == 'word_count' %}
+            <h2>Word Count</h2>
+            <p>Total Words: {{ results.word_count }}</p>
+        {% endif %}
+
+        {% if analysis_type == 'char_count' %}
+            <h2>Character Count</h2>
+            <p>Total Characters: {{ results.char_count }}</p>
+        {% endif %}
+
+        {% if analysis_type == 'char_frequency' %}
+            <h2>Character Frequency</h2>
+            <div id="results-data">{{ results.char_frequency | tojson }}</div>
+        {% endif %}
+
+        {% if analysis_type == 'all' %}
+            <h2>Complete Analysis</h2>
+            <p>Total Words: {{ results.word_count }}</p>
+            <p>Total Characters: {{ results.char_count }}</p>
+            <div id="results-data">Character Frequency: {{ results.char_frequency | tojson }}</div>
+        {% endif %}
+    </div>
+
+    <div>
+        <a href="/">Analyze Another Text</a>
+    </div>
 </body>
-  <script src="/static/js/app.js"></script>
-  <a href="/">Analyze Another Text</a>
-
 </html>
