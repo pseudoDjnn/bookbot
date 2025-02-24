@@ -8,13 +8,19 @@
 <body>
   <h1>Text Analysis Results</h1>
 
-  <h2>Analysis:</h2>
-  <ul>
-    {% for key, value in results.items() %}
-    <li><strong>{{ key }}:</strong>{{ value }}</li>
-    {% endfor %}
-  </ul>
-
-  <a href="/">Analyze Another Text</a>
+  <!-- Results data -->
+  
+  <!-- Bar chart container -->
+  <div id="chart-container">
+    <svg id="chart"></svg>
+  </div>
+  
+  <!-- Include your app.js script -->
+  <script id="results-data" style="display:none;">{{ results | tojson}}</script>
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/d3.min.js"></script>
 </body>
+  <script src="/static/js/app.js"></script>
+  <a href="/">Analyze Another Text</a>
+
 </html>
