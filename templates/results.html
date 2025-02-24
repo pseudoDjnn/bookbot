@@ -16,7 +16,7 @@
 
         {% if analysis_type == 'char_count' %}
             <h2>Character Count</h2>
-            <p>Total Characters: {{ results.char_count }}</p>
+            <p>Total Characters: {{ results.char_count | tojson | safe }}</p>
         {% endif %}
 
         {% if analysis_type == 'char_frequency' %}

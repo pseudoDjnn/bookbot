@@ -22,7 +22,10 @@ def analyze():
         results['word_count'] = len(words)
         
     if analysis_type == 'char_count' or analysis_type == 'all':
-        results['char_count'] = len(text)
+        char_count = {}
+        for char in text:
+            char_count[char] = char_count.get(char, 0) + 1
+        results['char_count'] = char_count
         
     if analysis_type == 'char_frequency' or analysis_type == 'all':
         char_freq = {}
