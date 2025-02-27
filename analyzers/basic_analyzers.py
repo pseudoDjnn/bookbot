@@ -128,3 +128,24 @@ class CharacterFrequencyAnalyzer(TextAnalyzer):
         return {"Character Frequency": self.get_char_frequency()}
 
 
+"""
+
+Initializes the count for the total amount of sentences and caches it
+
+"""
+class SentenceCountAlayzer(TextAnalyzer):
+  def __init__(self, text):
+      super().__init__(text)
+      self.sentence_count = None
+      
+  """
+  
+  Count the number of sentences in the text
+  
+  """
+  def get_sentence_count(self):
+      pass
+      
+      
+  def analyze(self):
+    return {"Sentence Count": self.get_sentence_count()}
