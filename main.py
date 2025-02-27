@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-from analyzers import TextAnalyzer, WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer
+# from analyzers import TextAnalyzer, WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer
 
 app = Flask(__name__)
 
