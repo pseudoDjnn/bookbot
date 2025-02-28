@@ -15,18 +15,17 @@ def analyze():
     text = request.form['text']
     analysis_type = request.form['analysis_type']
     
-    results = {}
+    word_count = None
+    
     
     if analysis_type == 'word_count' or analysis_type == 'all':
         # Use the class instead of duplicating logic
         word_analyzer = WordCountAnalyzer(text)
         word_count = word_analyzer.analyze()
-        results['word_count'] = word_count
-        print(f"Word count results: {results}")
     
-    return render_template('results.html', 
-                         results=results, 
-                         analysis_type=analysis_type)
+    return render_template('results.html',
+                         analysis_type=analysis_type,
+                         word_count=word_count)
 
 # Run the app in debug mode
 if __name__ == '__main__':

@@ -36,9 +36,7 @@ class WordCountAnalyzer(TextAnalyzer):
         
         """
         
-        return {
-            "Total Word Count": self.get_word_count(),
-            }
+        return self.get_word_count()
 
 
 """
@@ -73,7 +71,7 @@ class CharacterCountAnalyzer(TextAnalyzer):
         return self.char_count
 
     def analyze(self):
-        return {"Character Count": self.get_char_count()}
+        return self.get_char_count()
 
 
 """
@@ -125,7 +123,7 @@ class CharacterFrequencyAnalyzer(TextAnalyzer):
             return self.char_frequency
 
     def analyze(self):
-        return {"Character Frequency": self.get_char_frequency()}
+        return self.get_char_frequency()
 
 
 """
@@ -165,4 +163,4 @@ class SentenceCountAlayzer(TextAnalyzer):
       
       
   def analyze(self):
-    return {"Sentence Count": self.get_sentence_count()}
+    return self.get_sentence_count()
