@@ -22,21 +22,12 @@ class WordCountAnalyzer(TextAnalyzer):
                 
         """
             
-    def get_word_count(self):
+    def analyze(self):
         if self.word_count is None:
             words = self.text.split() 
             self.word_count = len(words)
         return self.word_count
-        
-        
-    def analyze(self):
-        """
 
-        Return the analysis as a dictionary
-        
-        """
-        
-        return self.get_word_count()
 
 
 """
