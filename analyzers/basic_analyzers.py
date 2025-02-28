@@ -144,7 +144,24 @@ class SentenceCountAlayzer(TextAnalyzer):
   
   """
   def get_sentence_count(self):
-      pass
+      if self.sentence_count is None:
+        count = 0
+        in_sentence = True
+
+        for word in self.text:
+          if word in [".", "!", "?"]:
+            if in_sentence:
+              count += 1
+              in_sentence = False
+          
+          elif not in_sentence and word.strip():
+            in_sentence = True
+            
+        if in_sentence:
+          count += 1
+          
+          self.sentence_count = count
+        return self.sentence_count
       
       
   def analyze(self):
