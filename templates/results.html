@@ -21,12 +21,12 @@
 
         {% if analysis_type == 'char_frequency' %}
             <h2>Character Frequency</h2>
-            <div id="results-data">{{ char_frequency }}</div>
+            <p>Total Character Frequency {{ char_frequency }}</p>
         {% endif %}
 
         {% if analysis_type == 'sentence' %}
             <h2>Sentence Count</h2>
-            <p>Sentences are: {{ sentence }}</p>
+            <p>Total Sentences: {{ sentence }}</p>
         {% endif %}
 
         
@@ -34,7 +34,8 @@
             <h2>Complete Analysis</h2>
             <p>Total Words: {{ word_count }}</p>
             <p>Total Characters: {{ char_count }}</p>
-            <div id="results-data">Character Frequency: {{ char_frequency }}</div>
+            <p>Total Sentences: {{ sentence }}</p>
+            <p id="results-data">Total Character Frequency: {{ char_frequency }}</p>
         {% endif %}
     </div>
 
