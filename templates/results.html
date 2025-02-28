@@ -8,7 +8,14 @@
 <body>
     <h1>Analysis Results</h1>
 
-    <div id="analysis-results">
+    <!-- Debug information -->
+    <div style="background-color: #f0f0f0; padding: 10px; margin: 10px 0; border: 1px solid #ccc;">
+        <h3>Debug Info:</h3>
+        <p>Analysis Type: "{{ analysis_type }}"</p>
+        <p>Results Object: {{ results }}</p>
+    </div>
+
+    <div id="analysis-results" data-analysis-type={{ analysis_type }}>
         {% if analysis_type == 'word_count' %}
             <h2>Word Count</h2>
             <p>Total Words: {{ results.word_count }}</p>

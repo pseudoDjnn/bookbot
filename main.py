@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-# from analyzers import TextAnalyzer, WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer
+from analyzers import  WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer
 
 app = Flask(__name__)
 
@@ -18,20 +18,11 @@ def analyze():
     results = {}
     
     if analysis_type == 'word_count' or analysis_type == 'all':
-        words = text.split()
-        results['word_count'] = len(words)
-        
-    if analysis_type == 'char_count' or analysis_type == 'all':
-        char_count = {}
-        for char in text:
-            char_count[char] = char_count.get(char, 0) + 1
-        results['char_count'] = char_count
-        
-    if analysis_type == 'char_frequency' or analysis_type == 'all':
-        char_freq = {}
-        for char in text:
-            char_freq[char] = char_freq.get(char, 0) + 1
-        results['char_frequency'] = char_freq
+        # Use the class instead of duplicating logic
+        word_analyzer = WordCountAnalyzer(text)
+        word_count = word_analyzer.analyze()
+        results['word_count'] = word_count
+        print(f"Word count results: {results}")
     
     return render_template('results.html', 
                          results=results, 
