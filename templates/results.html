@@ -16,19 +16,19 @@
 
         {% if analysis_type == 'char_count' %}
             <h2>Character Count</h2>
-            <p>Total Characters: {{ char_count | tojson | safe }}</p>
+            <p>Total Characters: {{ char_count }}</p>
         {% endif %}
 
         {% if analysis_type == 'char_frequency' %}
             <h2>Character Frequency</h2>
-            <div id="results-data">{{ char_frequency | tojson }}</div>
+            <div id="results-data">{{ char_frequency }}</div>
         {% endif %}
 
         {% if analysis_type == 'all' %}
             <h2>Complete Analysis</h2>
             <p>Total Words: {{ word_count }}</p>
             <p>Total Characters: {{ char_count }}</p>
-            <div id="results-data">Character Frequency: {{ char_frequency | tojson }}</div>
+            <div id="results-data">Character Frequency: {{ char_frequency }}</div>
         {% endif %}
     </div>
 

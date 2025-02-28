@@ -17,6 +17,8 @@ def analyze():
     
     word_count = None
     char_count = None
+    char_frequency = None
+    sentence = None
     
     
     if analysis_type == 'word_count' or analysis_type == 'all':
@@ -28,12 +30,17 @@ def analyze():
         char_count_analyzer = CharacterCountAnalyzer(text)
         char_count = char_count_analyzer.analyze()
         
+    if analysis_type == 'char_frequency' or analysis_type == 'all':
+        character_frequency_analyzer = CharacterFrequencyAnalyzer(text)
+        char_frequency = character_frequency_analyzer.analyze()
+        
         
     
     return render_template('results.html',
                          analysis_type=analysis_type,
                          word_count=word_count,
-                         char_count=char_count
+                         char_count=char_count,
+                         char_frequency=char_frequency
                          )
 
 # Run the app in debug mode
