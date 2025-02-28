@@ -49,7 +49,7 @@ class CharacterCountAnalyzer(TextAnalyzer):
         
     """
         
-    def get_char_count(self):
+    def analyze(self):
         if self.char_count is None:
             self.char_count  = {}
             for char in self.text:
@@ -60,9 +60,6 @@ class CharacterCountAnalyzer(TextAnalyzer):
                 else:
                     self.char_count[lower_char] = 1
         return self.char_count
-
-    def analyze(self):
-        return self.get_char_count()
 
 
 """
@@ -84,12 +81,12 @@ class CharacterFrequencyAnalyzer(TextAnalyzer):
 
     """
         
-    def get_char_frequency(self):
+    def analyze(self):
         # pass
         if self.char_frequency is None:
             self.char_frequency = []
             
-            char_count = self.char_count_analyzer.get_char_count()
+            char_count = self.char_count_analyzer.analyze()
             # print(f"char_count contains: {char_count}")
             
             frequency_data = []
@@ -112,9 +109,6 @@ class CharacterFrequencyAnalyzer(TextAnalyzer):
                 self.char_frequency.append(result)
                 
             return self.char_frequency
-
-    def analyze(self):
-        return self.get_char_frequency()
 
 
 """
