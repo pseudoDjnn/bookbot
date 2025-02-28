@@ -164,3 +164,26 @@ class SentenceCountAnalyzer(TextAnalyzer):
       
   def analyze(self):
     return self.get_sentence_count()
+
+
+"""
+
+Initialize the count for total amounts of an individual word being used throughout a book or text (meant for literature mainly)
+
+"""
+class IndividualWordCountAnalzyer(TextAnalyzer):
+    def __init__(self, text):
+        super().__init__(text)
+        self.individual_word = None
+        
+    """
+
+    The method for the count to take place
+    
+    """
+    def get_number_of_words(self):
+        pass
+    
+    
+    def analyze(self):
+        return self.get_number_of_words()
