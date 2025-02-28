@@ -131,7 +131,7 @@ class CharacterFrequencyAnalyzer(TextAnalyzer):
 Initializes the count for the total amount of sentences and caches it
 
 """
-class SentenceCountAlayzer(TextAnalyzer):
+class SentenceCountAnalyzer(TextAnalyzer):
   def __init__(self, text):
       super().__init__(text)
       self.sentence_count = None
@@ -142,24 +142,24 @@ class SentenceCountAlayzer(TextAnalyzer):
   
   """
   def get_sentence_count(self):
-      if self.sentence_count is None:
+    if self.sentence_count is None:
         count = 0
-        in_sentence = True
+        in_sentence = False
 
-        for word in self.text:
-          if word in [".", "!", "?"]:
-            if in_sentence:
-              count += 1
-              in_sentence = False
+        for char in self.text:
+            if char in [".", "!", "?"]:
+                if in_sentence:
+                    count += 1
+                    in_sentence = False
           
-          elif not in_sentence and word.strip():
-            in_sentence = True
+            elif char.strip():
+                in_sentence = True
             
         if in_sentence:
           count += 1
           
-          self.sentence_count = count
-        return self.sentence_count
+        self.sentence_count = count
+    return self.sentence_count
       
       
   def analyze(self):

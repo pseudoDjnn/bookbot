@@ -24,6 +24,12 @@
             <div id="results-data">{{ char_frequency }}</div>
         {% endif %}
 
+        {% if analysis_type == 'sentence' %}
+            <h2>Sentence Count</h2>
+            <p>Sentences are: {{ sentence }}</p>
+        {% endif %}
+
+        
         {% if analysis_type == 'all' %}
             <h2>Complete Analysis</h2>
             <p>Total Words: {{ word_count }}</p>

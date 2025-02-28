@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-from analyzers import  WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer
+from analyzers import  WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer, SentenceCountAnalyzer
 
 app = Flask(__name__)
 
@@ -34,13 +34,18 @@ def analyze():
         character_frequency_analyzer = CharacterFrequencyAnalyzer(text)
         char_frequency = character_frequency_analyzer.analyze()
         
+    if analysis_type == 'sentence' or analysis_type == 'all':
+        sentence_analyzer = SentenceCountAnalyzer(text)
+        sentence = sentence_analyzer.analyze()
+        
         
     
     return render_template('results.html',
                          analysis_type=analysis_type,
                          word_count=word_count,
                          char_count=char_count,
-                         char_frequency=char_frequency
+                         char_frequency=char_frequency,
+                         sentence=sentence
                          )
 
 # Run the app in debug mode
