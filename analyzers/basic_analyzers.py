@@ -126,7 +126,7 @@ class SentenceCountAnalyzer(TextAnalyzer):
   Count the number of sentences in the text
   
   """
-  def get_sentence_count(self):
+  def analyze(self):
     if self.sentence_count is None:
         count = 0
         in_sentence = False
@@ -145,10 +145,6 @@ class SentenceCountAnalyzer(TextAnalyzer):
           
         self.sentence_count = count
     return self.sentence_count
-      
-      
-  def analyze(self):
-    return self.get_sentence_count()
 
 
 """
@@ -165,10 +161,6 @@ class IndividualWordCountAnalzyer(TextAnalyzer):
 
     The method for the count to take place
     
-    """
-    def get_number_of_words(self):
-        pass
-    
-    
+    """ 
     def analyze(self):
-        return self.get_number_of_words()
+        return self.individual_word
