@@ -1,4 +1,4 @@
-from text_analyzer import TextAnalyzer
+from .text_analyzer import TextAnalyzer
 
 
 """
