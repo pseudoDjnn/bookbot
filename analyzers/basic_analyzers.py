@@ -163,4 +163,27 @@ class IndividualWordCountAnalzyer(TextAnalyzer):
     
     """ 
     def analyze(self):
+        if self.individual_word is None:
+            # Convert to lowercase to make everything eassier to grab
+            words = self.text.lower()
+
+            # Define any punctuation to remove
+            punctuations = ",.;:!?\"'()[]{}-_`~@#$%^&*+=|\\/<>"
+            
+            # Remove each punctuation
+            for punctuation in punctuations:
+                words = words.replace(punctuation, ' ')
+                
+            # Split into words after removing all punctuation
+            normalized_text = words.split()
+            
+            # initialize a dictionary for word counts
+            self.individual_word = {}
+
+            # Count how many times a word occurs
+            for word in normalized_text:
+                if word in self.individual_word:
+                    self.individual_word[word] += 1
+                else:
+                    self.individual_word[word] = 1
         return self.individual_word

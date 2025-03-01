@@ -14,6 +14,11 @@
             <p>Total Words: {{ word_count }}</p>
         {% endif %}
 
+        {% if analysis_type == 'word_count_2' %}
+            <h2>Word Count 2.0</h2>
+            <p>Total Words: {{ word_count_2 }}</p>
+        {% endif %}
+
         {% if analysis_type == 'char_count' %}
             <h2>Character Count</h2>
             <p>Total Characters: {{ char_count }}</p>
@@ -33,9 +38,7 @@
         {% if analysis_type == 'all' %}
             <h2>Complete Analysis</h2>
             <p>Total Words: {{ word_count }}</p>
-            <p>Total Characters: {{ char_count }}</p>
-            <p>Total Sentences: {{ sentence }}</p>
-            <p id="results-data">Total Character Frequency: {{ char_frequency }}</p>
+
         {% endif %}
     </div>
 
