@@ -11,27 +11,57 @@
     <div id="analysis-results" data-analysis-type={{ analysis_type }}>
         {% if analysis_type == 'word_count' %}
             <h2>Word Count</h2>
-            <p>Total Words: {{ word_count }}</p>
+
+            <!-- Add container for visualization -->
+            <div id="word-count-visualization"></div>
+            
+            <!-- Add a data attribute to store the word count -->
+            <div id="word-count-data" data-count="{{ word_count }}" style="display: none;"></div>
+
         {% endif %}
 
         {% if analysis_type == 'word_count_2' %}
             <h2>Word Count 2.0</h2>
             <p>Total Words: {{ word_count_2 }}</p>
+
+            <!-- Add container for visualization -->
+            <div id="word-count-visualization"></div>
+            
+            <!-- Add a data attribute to store the word count -->
+            <div id="word-count-data_2" data-count="{{ word_count_2 }}" style="display: none;"></div>
         {% endif %}
 
         {% if analysis_type == 'char_count' %}
             <h2>Character Count</h2>
             <p>Total Characters: {{ char_count }}</p>
+
+            <!-- Add container for visualization -->
+            <div id="word-count-visualization"></div>
+            
+            <!-- Add a data attribute to store the word count -->
+            <div id="char-count-data" data-count="{{ char_count }}" style="display: none;"></div>
         {% endif %}
 
         {% if analysis_type == 'char_frequency' %}
             <h2>Character Frequency</h2>
             <p>Total Character Frequency {{ char_frequency }}</p>
+
+            <!-- Add container for visualization -->
+            <div id="word-count-visualization"></div>
+            
+            <!-- Add a data attribute to store the word count -->
+            <div id="char_frequency-data" data-count="{{ char_frequency }}" style="display: none;"></div>
         {% endif %}
 
         {% if analysis_type == 'sentence' %}
             <h2>Sentence Count</h2>
             <p>Total Sentences: {{ sentence }}</p>
+
+            <!-- Add container for visualization -->
+            <div id="word-count-visualization"></div>
+            
+            <!-- Add a data attribute to store the word count -->
+            <div id="sentence-data" data-count="{{ sentence }}" style="display: none;"></div>
         {% endif %}
 
         
@@ -39,11 +69,17 @@
             <h2>Complete Analysis</h2>
             <p>Total Words: {{ word_count }}</p>
 
+            <!-- Add container for visualization -->
+            <div id="word-count-visualization"></div>
+            
+            <!-- Add a data attribute to store the word count -->
+            <div id="all" data-count="{{ all }}" style="display: none;"></div>
         {% endif %}
     </div>
 
     <div>
         <a href="/">Analyze Another Text</a>
     </div>
+    <script type="module" src="/static/js/app.js"></script>
 </body>
 </html>
