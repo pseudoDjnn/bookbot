@@ -11,6 +11,7 @@
     <div id="analysis-results" data-analysis-type={{ analysis_type }}>
         {% if analysis_type == 'word_count' %}
             <h2>Word Count</h2>
+            <p>{{ word_count }}</p>
 
             <!-- Add container for visualization -->
             <div id="word-count-visualization"></div>
@@ -68,6 +69,10 @@
         {% if analysis_type == 'all' %}
             <h2>Complete Analysis</h2>
             <p>Total Words: {{ word_count }}</p>
+            <p>Total Words 2.0: {{ word_count_2 }}</p>
+            <p>Total Characters: {{ char_count }}</p>
+            <p>Total Frequency: {{ char_frequency }}</p>
+            <p>Total Sentences: {{ sentence }}</p>
 
             <!-- Add container for visualization -->
             <div id="word-count-visualization"></div>
