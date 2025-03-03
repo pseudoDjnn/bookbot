@@ -59,6 +59,7 @@ class CharacterCountAnalyzer(TextAnalyzer):
                     self.char_count[lower_char] += 1
                 else:
                     self.char_count[lower_char] = 1
+                    
         return self.char_count
 
 
@@ -152,7 +153,7 @@ class SentenceCountAnalyzer(TextAnalyzer):
 Initialize the count for total amounts of an individual word being used throughout a book or text (meant for literature mainly)
 
 """
-class IndividualWordCountAnalzyer(TextAnalyzer):
+class WordFrequencyAnalyzer(TextAnalyzer):
     def __init__(self, text):
         super().__init__(text)
         self.individual_word = None

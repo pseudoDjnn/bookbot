@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-from analyzers import  WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer, SentenceCountAnalyzer,IndividualWordCountAnalzyer
+from analyzers import TextAnalyzer, WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer, SentenceCountAnalyzer, WordFrequencyAnalyzer
 
 app = Flask(__name__)
 
@@ -40,7 +40,7 @@ def analyze():
         sentence = sentence_analyzer.analyze()
         
     if analysis_type == 'word_count_2' or analysis_type == 'all':
-        words_in_sentence = IndividualWordCountAnalzyer(text)
+        words_in_sentence = WordFrequencyAnalyzer(text)
         word_count_2 = words_in_sentence.analyze()
         # print(word_count_2)
         
