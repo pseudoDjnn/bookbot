@@ -83,12 +83,10 @@ class CharacterFrequencyAnalyzer(TextAnalyzer):
     """
         
     def analyze(self):
-        # pass
         if self.char_frequency is None:
             self.char_frequency = []
             
             char_count = self.char_count_analyzer.analyze()
-            # print(f"char_count contains: {char_count}")
             
             frequency_data = []
 
@@ -99,10 +97,7 @@ class CharacterFrequencyAnalyzer(TextAnalyzer):
                         "Numbers": num
                         })
             
-            frequency_data.sort(
-                key=lambda x: x["Numbers"],
-                reverse=True
-                )
+            frequency_data.sort(key=lambda x: x["Numbers"],reverse=True)
             
             
             for data in frequency_data:
