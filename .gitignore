@@ -2,4 +2,4 @@ venv/
 
 books/
 
-node_modules/
+__pycache__

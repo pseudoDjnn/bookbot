@@ -4,22 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Text Analyzer</title>
+  <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
-  <h1>Analyze Your Text</h1>
-  <form action="/analyze/" method="POST">
-    <textarea name="text" rows="10" cols="50" placeholder="Enter your text here..."></textarea>
-    <br>
-    <label for="analysis_type">Choose an analyis:</label>
-    <select name="analysis_type" id="analysis_type">
-      <option value="word_count">Word Count</option>
-      <option value="char_count">Character Count</option>
-      <option value="char_frequency">Character Frequency</option>
-      <option value="all">Run All</option>
-    </select>
-    <br>
-    <button type="submit">Analyze</button>
-  </form>
+  <div class="container">
 
+    <h1>Analyze Your Text</h1>
+    <form action="/analyze/" method="POST">
+      <textarea name="text" rows="10" cols="50" placeholder="Enter your text here..."></textarea>
+      <br>
+      <label for="analysis_type">Choose an analyis:</label>
+      <select name="analysis_type" id="analysis_type">
+        <option value="word_count">Word Count</option>
+        <option value="word_count_2">Word Count 2.0</option>
+        <option value="char_count">Character Count</option>
+        <option value="sentence">Sentence Count</option>
+        <option value="char_frequency">Character Frequency</option>
+        <option value="all">Run All</option>
+      </select>
+      <br>
+      <button type="submit">Analyze</button>
+    </form>
+  </div>
+  <script type="module" src="/static/js/app.js"></script>
 </body>
 </html>
