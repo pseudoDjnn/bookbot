@@ -12,5 +12,5 @@ A Python-based text analysis tool that processes text files and provides detaile
 ## Installation
 
 ```bash
-git clone [your-repo-url]
-cd [your-project-directory]
+git clone [https://github.com/pseudoDjnn/bookbot.git]
+cd [/bookbot]
