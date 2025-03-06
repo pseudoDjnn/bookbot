@@ -30,10 +30,12 @@ def analyze():
     if analysis_type == 'char_count' or analysis_type == 'all':
         char_count_analyzer = CharacterCountAnalyzer(text)
         char_count = char_count_analyzer.analyze()
+        # print(char_count)
         
     if analysis_type == 'formatted_char_count' or analysis_type == 'all':
         character_frequency_analyzer = CharacterDisplayFormatter(text)
         formatted_char_count = character_frequency_analyzer.analyze()
+        # print(formatted_char_count)
         
     if analysis_type == 'sentence_count' or analysis_type == 'all':
         sentence_analyzer = SentenceCountAnalyzer(text)

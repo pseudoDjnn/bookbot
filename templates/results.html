@@ -19,17 +19,33 @@
             
             {% if analysis_type == 'word_count_2' %}
             <h2>Word Count 2.0</h2>
-            <p>Total Words: {{ word_count_2 }}</p>            
+            <div>
+                {% for x in word_count_2%}
+                <p>{{ x }}</p>
+                {% endfor %}
+            </div>            
             {% endif %}
             
             {% if analysis_type == 'char_count' %}
             <h2>Character Count</h2>
-            <div>
-                {% for x in char_count%}
-                <p>{{ x }}</p>
-                {% endfor %}
-            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Character</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for char, count in char_count.items() %}
+                        <tr>
+                            <td>{{ char | replace(' ', '[space]') | replace('\n', '[newline]') | replace('\r', '[carriage return]') }}</td>
+                            <td>{{ count }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
             {% endif %}
+
             
             {% if analysis_type == 'formatted_char_count' %}
             <h2>Character Frequency</h2>
