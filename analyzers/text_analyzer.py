@@ -18,7 +18,8 @@ class TextAnalyzer:
     def analyze_all(text, analyzers):
         """
 
-        Runs analysis from multiple analyzers and combines results into one dictionary.
+        Runs analysis from multiple analyzers and combines results 
+        into one dictionary.
         
         """
                 

@@ -65,46 +65,45 @@ class CharacterCountAnalyzer(TextAnalyzer):
 
 """
 
-Initialize with the text to analyze and prepare the character count frequency cache.
+Initialize with the text to analyze and format character count for display.
 
 """
 
 
-class CharacterFrequencyAnalyzer(TextAnalyzer):
+class CharacterDisplayFormatter(TextAnalyzer):
     def __init__(self, text):
         super().__init__(text)
-        self.char_frequency = None
+        self.formatted_results = None
         self.char_count_analyzer = CharacterCountAnalyzer(text)
 
     """
 
-    Calculates and caches the total letter count frequency from the test and places it into a dictionay list
+    Formats character count data into strings, sorted by frequency.
 
     """
         
     def analyze(self):
-        if self.char_frequency is None:
-            self.char_frequency = []
-            
+        if self.formatted_results is None:
             char_count = self.char_count_analyzer.analyze()
+            self.formatted_results = []
             
-            frequency_data = []
-
-            for char, num in char_count.items():
-                if char.isalpha():
-                    frequency_data.append({
-                        "Characters": char,
-                        "Numbers": num
-                        })
+            # Filter for alphabetic characters only
+            alpha_chars = [(character, count)
+                           for character, count in char_count.items()
+                           if character.isalpha()]
             
-            frequency_data.sort(key=lambda x: x["Numbers"],reverse=True)
+            # Sort by count (highest first)
+            sorted_chars = sorted(alpha_chars,
+                                  key=lambda item: item[1],
+                                  reverse=True)
             
-            
-            for data in frequency_data:
-                result = f"Characters: '{data['Characters']}' Count: {data['Numbers']}"
-                self.char_frequency.append(result)
+            # Format each entry as a readable string
+            for character, count in sorted_chars:
+                self.formatted_results.append(
+                    f"Characters:  '{character}' Count: {count}"
+                )
                 
-            return self.char_frequency
+            return self.formatted_results
 
 
 """

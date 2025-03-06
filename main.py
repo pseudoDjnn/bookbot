@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-from analyzers import TextAnalyzer, WordCountAnalyzer, CharacterCountAnalyzer, CharacterFrequencyAnalyzer, SentenceCountAnalyzer, WordFrequencyAnalyzer
+from analyzers import TextAnalyzer, WordCountAnalyzer, CharacterCountAnalyzer, CharacterDisplayFormatter, SentenceCountAnalyzer, WordFrequencyAnalyzer
 
 app = Flask(__name__)
 
@@ -17,8 +17,8 @@ def analyze():
     
     word_count = None
     char_count = None
-    char_frequency = None
-    sentence = None
+    formatted_char_count = None
+    sentence_count = None
     word_count_2 = None
     
     
@@ -31,13 +31,14 @@ def analyze():
         char_count_analyzer = CharacterCountAnalyzer(text)
         char_count = char_count_analyzer.analyze()
         
-    if analysis_type == 'char_frequency' or analysis_type == 'all':
-        character_frequency_analyzer = CharacterFrequencyAnalyzer(text)
-        char_frequency = character_frequency_analyzer.analyze()
+    if analysis_type == 'formatted_char_count' or analysis_type == 'all':
+        character_frequency_analyzer = CharacterDisplayFormatter(text)
+        formatted_char_count = character_frequency_analyzer.analyze()
         
-    if analysis_type == 'sentence' or analysis_type == 'all':
+    if analysis_type == 'sentence_count' or analysis_type == 'all':
         sentence_analyzer = SentenceCountAnalyzer(text)
-        sentence = sentence_analyzer.analyze()
+        sentence_count = sentence_analyzer.analyze()
+        print(sentence_count)
         
     if analysis_type == 'word_count_2' or analysis_type == 'all':
         words_in_sentence = WordFrequencyAnalyzer(text)
@@ -50,8 +51,8 @@ def analyze():
                          analysis_type=analysis_type,
                          word_count=word_count,
                          char_count=char_count,
-                         char_frequency=char_frequency,
-                         sentence=sentence,
+                         formatted_char_count=formatted_char_count,
+                         sentence_count=sentence_count,
                          word_count_2=word_count_2
                          )
 
