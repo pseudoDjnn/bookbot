@@ -24,12 +24,20 @@
             
             {% if analysis_type == 'char_count' %}
             <h2>Character Count</h2>
-            <p>Total Characters: {{ char_count }}</p>            
+            <div>
+                {% for x in char_count%}
+                <p>{{ x }}</p>
+                {% endfor %}
+            </div>
             {% endif %}
             
             {% if analysis_type == 'formatted_char_count' %}
             <h2>Character Frequency</h2>
-            <p>Total Character Frequency {{ formatted_char_count }}</p>            
+            <div>
+                {% for item in formatted_char_count%}
+                <p>{{ item }}</p>
+                {% endfor %}
+            </div>            
             {% endif %}
             
             {% if analysis_type == 'sentence_count' %}

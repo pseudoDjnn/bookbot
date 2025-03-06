@@ -88,22 +88,28 @@ class CharacterDisplayFormatter(TextAnalyzer):
             self.formatted_char_count = []
             
             # Filter for alphabetic characters only
-            alpha_chars = [(character, count)
-                           for character, count in char_count.items()
-                           if character.isalpha()]
-            
+            char_list = []
+            for character, count in char_count.items():
+                if character.isalpha():
+                    char_list.append({
+                        "char": character,
+                        "count": count
+                    })
+                    
             # Sort by count (highest first)
-            sorted_chars = sorted(alpha_chars,
-                                  key=lambda item: item[1],
-                                  reverse=True)
+            char_list.sort(
+                key=lambda x: x["count"],
+                reverse=True
+            )
             
             # Format each entry as a readable string
-            for character, count in sorted_chars:
+            for x in char_list:
                 self.formatted_char_count.append(
-                    f"Characters:  '{character}' Count: {count}"
+                    f"{x['char']}: {x['count']}"
                 )
+                    
                 
-            return self.formatted_char_count
+        return self.formatted_char_count
 
 
 """
