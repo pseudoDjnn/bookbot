@@ -73,7 +73,7 @@ Initialize with the text to analyze and format character count for display.
 class CharacterDisplayFormatter(TextAnalyzer):
     def __init__(self, text):
         super().__init__(text)
-        self.formatted_results = None
+        self.formatted_char_count = None
         self.char_count_analyzer = CharacterCountAnalyzer(text)
 
     """
@@ -83,9 +83,9 @@ class CharacterDisplayFormatter(TextAnalyzer):
     """
         
     def analyze(self):
-        if self.formatted_results is None:
+        if self.formatted_char_count is None:
             char_count = self.char_count_analyzer.analyze()
-            self.formatted_results = []
+            self.formatted_char_count = []
             
             # Filter for alphabetic characters only
             alpha_chars = [(character, count)
@@ -99,11 +99,11 @@ class CharacterDisplayFormatter(TextAnalyzer):
             
             # Format each entry as a readable string
             for character, count in sorted_chars:
-                self.formatted_results.append(
+                self.formatted_char_count.append(
                     f"Characters:  '{character}' Count: {count}"
                 )
                 
-            return self.formatted_results
+            return self.formatted_char_count
 
 
 """

@@ -38,12 +38,10 @@ def analyze():
     if analysis_type == 'sentence_count' or analysis_type == 'all':
         sentence_analyzer = SentenceCountAnalyzer(text)
         sentence_count = sentence_analyzer.analyze()
-        print(sentence_count)
         
     if analysis_type == 'word_count_2' or analysis_type == 'all':
         words_in_sentence = WordFrequencyAnalyzer(text)
         word_count_2 = words_in_sentence.analyze()
-        # print(word_count_2)
         
         
     
