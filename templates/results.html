@@ -29,7 +29,7 @@
         {% endif %}
             
         {% if analysis_type == 'word_count_2' %}
-            <h2>Word Count 2.0</h2>
+            <h2>Top 50 Most Frequent Words</h2>
             <table>
                 <thead>
                     <tr>
@@ -71,25 +71,25 @@
 
             
         {% if analysis_type == 'formatted_char_count' %}
-            <h2>Character Frequency</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Letter</th>
-                        <th>Count</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in formatted_char_count %}
-                        {% set parts = item.split(': ') %}
-                        <tr>
-                            <td>{{ parts[0] }}</td>
-                            <td>{{ parts[1] }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>            
+        <h2>Character Frequency</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Letter</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for char, count in formatted_char_count.items() %}
+                <tr>
+                    <td>{{ char | replace(' ', '[space]') | replace('\n', '[newline]') | replace('\r', '[carriage return]') }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         {% endif %}
+
 
             
         {% if analysis_type == 'sentence_count' %}

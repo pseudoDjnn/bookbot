@@ -87,26 +87,13 @@ class CharacterDisplayFormatter(TextAnalyzer):
             char_count = self.char_count_analyzer.analyze()
             self.formatted_char_count = []
             
-            # Filter for alphabetic characters only
-            char_list = []
-            for character, count in char_count.items():
-                if character.isalpha():
-                    char_list.append({
-                        "char": character,
-                        "count": count
-                    })
-                    
-            # Sort by count (highest first)
-            char_list.sort(
-                key=lambda x: x["count"],
-                reverse=True
-            )
+            # Sort characters by frequency, descending
+            sorted_char = sorted(
+                char_count.items(), key=lambda x: x[1], reverse=True
+            )[:50]
             
-            # Format each entry as a readable string
-            for x in char_list:
-                self.formatted_char_count.append(
-                    f"{x['char']}: {x['count']}"
-                )
+            # Store as a dictionary
+            self.formatted_char_count = {char: count for char, count in sorted_char}
                     
                 
         return self.formatted_char_count
@@ -169,7 +156,7 @@ class WordFrequencyAnalyzer(TextAnalyzer):
             words = self.text.lower()
 
             # Define any punctuation to remove
-            punctuations = ",.;:!?\"'()[]{}-_`~@#$%^&*+=|\\/<>"
+            punctuations = ",.;:!?\"'({)[]}-_`~@#$%^&*+=|\\/<>"
             
             # Remove each punctuation
             for punctuation in punctuations:
@@ -187,4 +174,7 @@ class WordFrequencyAnalyzer(TextAnalyzer):
                     self.individual_word[word] += 1
                 else:
                     self.individual_word[word] = 1
-        return self.individual_word
+                    
+        # Sort the infor again for the jinja html
+        sorted_words = dict(sorted(self.individual_word.items(), key=lambda x: x[1], reverse=True)[:50])
+        return sorted_words
