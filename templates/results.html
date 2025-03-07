@@ -12,21 +12,44 @@
         <h1>Analysis Results</h1>
         
         <div id="analysis-results" data-analysis-type={{ analysis_type }}>
-            {% if analysis_type == 'word_count' %}
+        {% if analysis_type == 'word_count' %}
             <h2>Word Count</h2>
-            <p>{{ word_count }}</p>            
-            {% endif %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Total Amount of Words</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ word_count }}</td>
+                    </tr>
+                </tbody>
+            </table>      
+        {% endif %}
             
-            {% if analysis_type == 'word_count_2' %}
+        {% if analysis_type == 'word_count_2' %}
             <h2>Word Count 2.0</h2>
-            <div>
-                {% for x in word_count_2%}
-                <p>{{ x }}</p>
-                {% endfor %}
-            </div>            
-            {% endif %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Word</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for word, count in word_count_2.items() %}
+                    <tr>
+                        <td>{{ word }}</td>
+                        <td>{{ count }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>            
+        {% endif %}
+
             
-            {% if analysis_type == 'char_count' %}
+        {% if analysis_type == 'char_count' %}
             <h2>Character Count</h2>
             <table>
                 <thead>
@@ -44,10 +67,10 @@
                     {% endfor %}
                 </tbody>
             </table>
-            {% endif %}
+        {% endif %}
 
             
-            {% if analysis_type == 'formatted_char_count' %}
+        {% if analysis_type == 'formatted_char_count' %}
             <h2>Character Frequency</h2>
             <table>
                 <thead>
@@ -69,10 +92,21 @@
         {% endif %}
 
             
-            {% if analysis_type == 'sentence_count' %}
+        {% if analysis_type == 'sentence_count' %}
             <h2>Sentence Count</h2>
-            <p>Total Sentences: {{ sentence_count }}</p>            
-            {% endif %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Total Amount of Sentences</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ sentence_count }}</td>
+                    </tr>
+                </tbody>
+            </table>            
+        {% endif %}
             
             
             {% if analysis_type == 'all' %}
