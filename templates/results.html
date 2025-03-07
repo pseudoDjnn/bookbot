@@ -49,12 +49,25 @@
             
             {% if analysis_type == 'formatted_char_count' %}
             <h2>Character Frequency</h2>
-            <div>
-                {% for item in formatted_char_count%}
-                <p>{{ item }}</p>
-                {% endfor %}
-            </div>            
-            {% endif %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Letter</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in formatted_char_count %}
+                        {% set parts = item.split(': ') %}
+                        <tr>
+                            <td>{{ parts[0] }}</td>
+                            <td>{{ parts[1] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>            
+        {% endif %}
+
             
             {% if analysis_type == 'sentence_count' %}
             <h2>Sentence Count</h2>
