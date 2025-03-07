@@ -45,6 +45,25 @@ body {
   border-radius: 4px;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid #b46734;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background: rgba(26, 25, 25, 0.1);
+  color: #b46734;
+}
+
+
 /* Text area styling */
 textarea {
   width: 100%;
