@@ -61,7 +61,7 @@
                 <tbody>
                     {% for char, count in char_count.items() %}
                         <tr>
-                            <td>{{ char | replace(' ', '[space]') | replace('\n', '[newline]') | replace('\r', '[carriage return]') }}</td>
+                            <td class="dynamic">{{ char | replace(' ', '[space]') | replace('\n', '[newline]') | replace('\r', '[carriage return]') }}</td>
                             <td>{{ count }}</td>
                         </tr>
                     {% endfor %}
@@ -82,7 +82,7 @@
             <tbody>
                 {% for char, count in formatted_char_count.items() %}
                 <tr>
-                    <td>{{ char | replace(' ', '[space]') | replace('\n', '[newline]') | replace('\r', '[carriage return]') }}</td>
+                    <td class="dynamic">{{ char | replace(' ', '[space]') | replace('\n', '[newline]') | replace('\r', '[carriage return]') }}</td>
                     <td>{{ count }}</td>
                 </tr>
                 {% endfor %}
