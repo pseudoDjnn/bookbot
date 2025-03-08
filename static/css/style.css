@@ -44,11 +44,14 @@ body {
 }
 
 .container::-webkit-scrollbar-thumb {
-  background: rgba(26, 25, 25, 0.5);
+  background: rgba(77, 37, 4, 0.233);
   border-radius: 4px;
 }
 
 h1,
+h2,
+p,
+li,
 label,
 option {
   background: linear-gradient(to right, #6d5e55, #674936);
@@ -90,6 +93,34 @@ td {
 th {
   background: rgba(26, 25, 25, 0.1);
   color: #b46734;
+}
+
+.wrapper {
+  display: flex;
+  gap: 20px;
+  width: 300px;
+  overflow-x: scroll;
+  scroll-snap-type: x proximity;
+}
+
+.card {
+  scroll-snap-align: center;
+  box-sizing: border-box;
+  padding: 20px 30px;
+  flex-shrink: 0;
+  width: 300px;
+  background-color: transparent;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background: rgba(77, 37, 4, 0.233);
+  border-radius: 4px;
 }
 
 
