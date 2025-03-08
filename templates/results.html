@@ -109,14 +109,49 @@
         {% endif %}
             
             
-            {% if analysis_type == 'all' %}
-            <h2>Complete Analysis</h2>
-            <p>Total Words: {{ word_count }}</p>
-            <p>Total Words 2.0: {{ word_count_2 }}</p>
-            <p>Total Characters: {{ char_count }}</p>
-            <p>Total Frequency: {{ formatted_char_count }}</p>
-            <p>Total Sentences: {{ sentence_count }}</p>            
-            {% endif %}
+        {% if analysis_type == 'all' %}
+        <div class="wrapper">
+            <div class="card">
+                <h2>Total Words</h2>
+                <p>{{ word_count }}</p>
+            </div>
+
+            <div class="card">
+                <h2>Top 10 Unique Words</h2>
+                <ul>
+                    {% for word, count in word_count_2.items() %}
+                        {% if loop.index <= 10 %}
+                            <li>{{ word }}: {{ count }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Total Characters</h2>
+                <p>{{ char_count.values() | sum }}</p>
+            </div>
+
+            <div class="card">
+                <h2>Top 10 Unique Characters</h2>
+                <ul>
+                    {% for char, count in formatted_char_count.items() | list %}
+                        {% if loop.index <= 10 %}
+                            <li>{{ char | replace(' ', '[space]') | replace('\n', '[newline]') | replace('\r', '[carriage return]') }}: {{ count }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Total Sentences</h2>
+                <p>{{ sentence_count }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+
+    
         </div>
         
         <div>

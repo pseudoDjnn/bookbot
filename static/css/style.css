@@ -79,7 +79,7 @@ td {
 
 .dynamic::before {
   content: counter(headings);
-  background-color: #0071ff;
+  background-color: #ff9900;
   border-radius: 2px;
   padding: .15em 5px;
   width: 40px;
