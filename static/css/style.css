@@ -97,18 +97,19 @@ th {
 
 .wrapper {
   display: flex;
-  gap: 20px;
-  width: 300px;
+  gap: 10px;
+  width: 400px;
   overflow-x: scroll;
   scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
 }
 
 .card {
   scroll-snap-align: center;
   box-sizing: border-box;
-  padding: 20px 30px;
+  padding: 2px 30px;
   flex-shrink: 0;
-  width: 300px;
+  width: 400px;
   background-color: transparent;
   border-radius: 14px;
   text-align: center;
