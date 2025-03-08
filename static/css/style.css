@@ -1,3 +1,7 @@
+:root {
+  counter-reset: headings;
+}
+
 /* Centering the content */
 body {
   display: flex;
@@ -12,9 +16,9 @@ body {
 
 /* Main container styling */
 .container {
-  width: clamp(500px, 25vw, 800px);
-  /* min-height: 300px;
-  max-height: 500px; */
+  /* width: clamp(500px, 25vw, 800px); */
+  min-height: 300px;
+  max-height: 500px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -69,6 +73,20 @@ td {
   text-align: center;
 }
 
+.dynamic {
+  counter-increment: headings;
+}
+
+.dynamic::before {
+  content: counter(headings);
+  background-color: #0071ff;
+  border-radius: 2px;
+  padding: .15em 5px;
+  width: 40px;
+  text-align: center;
+
+}
+
 th {
   background: rgba(26, 25, 25, 0.1);
   color: #b46734;
@@ -93,7 +111,7 @@ textarea {
 /* Text area focus effect */
 textarea:focus {
   border-color: rgba(255, 111, 0, 0.7);
-  box-shadow: -10px -10px 10px rgba(255, 111, 0, 0.7);
+  box-shadow: -10px -10px 5px rgba(255, 111, 0, 0.7);
 }
 
 /* Select dropdown */
@@ -103,7 +121,7 @@ select {
   border-radius: 6px;
   border: none;
   /* background: rgba(26, 25, 25, 0.1); */
-  background: linear-gradient(to right, #6d5e55, #674936);
+  background: linear-gradient(to right, #556d66, #36675a);
   background-clip: text;
   color: transparent;
   cursor: pointer;
